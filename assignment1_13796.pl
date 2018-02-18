@@ -33,16 +33,16 @@ q5_corner_move2() :-
 	ailp_show_move(p(U,U),p(U,1)),
 	ailp_show_move(p(U,1),p(1,1)).
 
-test() :-
-	ailp_grid_size(U),
-	ailp_start_position(p(X,Y)),
-	(X = 1, Y = 1 -> X1 = X,  Y1 = U
-	;X = 1, Y=/1 -> X1 = U,  Y1 = Y
-	;X /=1, Y = 1 -> X1 is 1, Y1 = Y
-	;X /=1, Y /=1 -> X1 = X,  Y1 is 1  
-	),
-	ailp_show_move(p(X,Y),p(X1,Y1)).
 
+dynamic rot/1.
+rot(n).
+rot(e).
+rot(s).
+rot(w).
+
+spir(Path) :-
+	ailp_start_position(p(X,Y)),
+	spir(p(X,Y),L).
 
 
 %use ; to create a requery.
