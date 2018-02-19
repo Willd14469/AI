@@ -34,15 +34,26 @@ q5_corner_move2() :-
 	ailp_show_move(p(U,1),p(1,1)).
 
 
-dynamic rot/1.
+:- dynamic rot/1.
 rot(n).
 rot(e).
 rot(s).
 rot(w).
 
+rotate() :-
+	rot(A),
+	retract(rot(A)),
+	assert(rot(A)).
+
+
+
 spir(Path) :-
 	ailp_start_position(p(X,Y)),
-	spir(p(X,Y),L).
+	spir(p(X,Y),Path).
+
+spir(P, Path) :-
+	spir(P,[P]).
+
 
 
 %use ; to create a requery.
